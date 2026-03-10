@@ -1,0 +1,82 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+}
+
+
+#clock {
+    font-size: 5rem;
+    font-weight: bold;
+    padding: 30px 60px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    text-align: center;
+    margin-bottom: 50px;
+    min-width: 300px;
+}
+
+#timerblock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#timerblock a {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+#timerblock a:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+
+@media (max-width: 500px) {
+    #clock {
+        font-size: 3rem;
+        padding: 20px 40px;
+    }
+
+    #timerblock a {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,99 @@
+/* Page background */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f1f5f9;   /* soft gray */
+}
+
+/* Main card */
+.todo-container {
+    width: 320px;
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.todo-container h2 {
+    text-align: center;
+    color: #1e3a8a; /* indigo */
+    margin-bottom: 15px;
+}
+
+/* Input */
+input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+}
+
+/* Add button */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Add task button */
+button:first-of-type {
+    background: #2563eb; /* blue */
+    color: white;
+}
+
+/* Filters */
+.filters {
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters button {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Task list */
+ul {
+    padding: 0;
+}
+
+/* Task item */
+li {
+    list-style: none;
+    background: #f8fafc;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Completed task */
+.completed {
+    text-decoration: line-through;
+    color: #16a34a; /* green */
+    font-weight: 500;
+}
+
+/* Delete button */
+li button {
+    margin-left: auto;
+    background: #dc2626; /* red */
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* Completed count */
+#count {
+    margin-top: 10px;
+    text-align: center;
+    color: #0f766e; /* teal */
+    font-weight: 600;
+}

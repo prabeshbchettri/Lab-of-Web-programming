@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic To-Do List</title>
+    <link rel="stylesheet" href="To_do_list.css">
+</head>
+<body>
+
+<div class="todo-container">
+    <h2>To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+
+    <div class="filters">
+        <button onclick="filterTasks('all')">All</button>
+        <button onclick="filterTasks('completed')">Completed</button>
+        <button onclick="filterTasks('pending')">Pending</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <p id="count">Completed Tasks: 0</p>
+</div>
+
+<script src="To_do_list.js"></script>
+</body>
+</html>
