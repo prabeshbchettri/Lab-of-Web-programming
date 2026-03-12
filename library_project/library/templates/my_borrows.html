@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}My Borrowed Books - Library{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">📚 My Borrowed Books</h1>
+
+    <div class="action-row">
+        <a href="{% url 'home' %}" class="btn btn-primary">← Back to Home</a>
+    </div>
+
+    {% if borrowed_books %}
+        {% for borrow in borrowed_books %}
+            <div class="book-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="flex: 1;">
+                        <div class="book-title">{{ borrow.book.title }}</div>
+                        <div class="book-author">by {{ borrow.book.author }}</div>
+                        
+                        <div class="book-details mt-2">
+                            <p class="mb-1"><strong>ISBN:</strong> {{ borrow.book.isbn }}</p>
+                            <p class="mb-1">
+                                <strong>Borrowed Date:</strong> 
+                                <span class="badge badge-info">{{ borrow.borrowed_date|date:"M d, Y" }}</span>
+                            </p>
+                            
+                            {% if borrow.return_date %}
+                                <p class="mb-0">
+                                    <strong>Returned Date:</strong> 
+                                    <span class="badge badge-success">{{ borrow.return_date|date:"M d, Y" }}</span>
+                                </p>
+                            {% else %}
+                                <p class="mb-0">
+                                    <strong>Status:</strong> 
+                                    <span class="badge badge-warning">Currently Borrowed</span>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-left: 1rem;">
+                        {% if not borrow.return_date %}
+                            <a href="{% url 'return_book' borrow.book.id %}" class="btn btn-danger">Return Book</a>
+                        {% else %}
+                            <div style="color: #155724; font-weight: bold; padding: 0.75rem; background-color: #d4edda; border-radius: 4px;">
+                                ✓ Returned
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="alert alert-info mt-4">
+            <h3 class="alert-heading">Borrowing Statistics</h3>
+            <ul style="margin-bottom: 0; margin-top: 0.5rem;">
+                <li>Total Books Borrowed: <strong>{{ borrowed_books.count }}</strong></li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            <h3 class="alert-heading">No Borrowed Books</h3>
+            <p>You haven't borrowed any books yet. <a href="{% url 'home' %}">Browse available books</a> and start borrowing!</p>
+        </div>
+    {% endif %}
+{% endblock %}
