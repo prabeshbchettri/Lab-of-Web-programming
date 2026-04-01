@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Library - Home{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">📖 Available Books</h1>
+
+    <div class="action-row">
+        <a href="{% url 'add_book' %}" class="btn btn-primary">Add New Book</a>
+        <a href="{% url 'my_borrows' %}" class="btn btn-info">My Borrowed Books</a>
+    </div>
+
+    {% if books %}
+        <div class="stats-row">
+            <div class="stat-card">
+                <h3>Total Books</h3>
+                <div class="stat-number">{{ books|length }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>Available</h3>
+                <div class="stat-number">{{ books|length }}</div>
+            </div>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem 0;">Library Collection</h2>
+        {% for book in books %}
+            <div class="book-card">
+                <div class="book-title">{{ book.title }}</div>
+                <div class="book-author">by {{ book.author }}</div>
+                
+                <div class="book-details mb-2">
+                    <p class="mb-1"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    <p class="mb-1"><strong>Published:</strong> {{ book.published_date|date:"F d, Y" }}</p>
+                    <p class="mb-1"><strong>Available Copies:</strong> {{ book.available_copies }}</p>
+                </div>
+
+                {% if book.available %}
+                    <span class="available-badge">✓ Available</span>
+                    <a href="{% url 'borrow_book' book.id %}" class="btn btn-success" style="margin-left: 0.5rem;">Borrow</a>
+                {% else %}
+                    <span class="unavailable-badge">✗ Out of Stock</span>
+                    <button class="btn btn-disabled" disabled>Not Available</button>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center">
+            <h3 class="alert-heading">No Books Available</h3>
+            <p>The library has no books yet. <a href="{% url 'add_book' %}">Add a book</a> to get started!</p>
+        </div>
+    {% endif %}
+{% endblock %}
